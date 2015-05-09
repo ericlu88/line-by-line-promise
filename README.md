@@ -16,7 +16,7 @@ var file = new lineReader('big_file.txt');
 // Example using co: https://github.com/tj/co
 co(function* () {
     var line;
-    while(line = yield file.readLine()) {
+    while((line = yield file.readLine())) {
         console.log(line);
     }
 });
@@ -24,7 +24,7 @@ co(function* () {
 // Example using bluebird: https://github.com/petkaantonov/bluebird
 (Promise.coroutine(function* () {
     var line;
-    while(line = yield file.readLine()) {
+    while((line = yield file.readLine())) {
         console.log(line);
     }
 }))();
