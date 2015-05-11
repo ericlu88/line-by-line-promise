@@ -39,6 +39,4 @@ Promise.coroutine(function* () {
 
 ## License
 
-The MIT License (MIT)
-
-Copyright © 2014 Eric Lu
+MIT License.  See license text in [LICENSE](LICENSE)
