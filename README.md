@@ -10,24 +10,26 @@ Installation:
 ## Usage:
 
 ```javascript
-var lineReader = require('line-by-line-promise');
-var file = new lineReader('big_file.txt');
+var LineReader = require('line-by-line-promise');
+var file = new LineReader('big_file.txt');
 
 // Example using co: https://github.com/tj/co
 co(function* () {
     var line;
-    while((line = yield file.readLine())) {
+    // note that eof is defined when `readLine()` yields `null`
+    while((line = yield file.readLine()) !== null) {
         console.log(line);
     }
 });
 
 // Example using bluebird: https://github.com/petkaantonov/bluebird
-(Promise.coroutine(function* () {
+Promise.coroutine(function* () {
     var line;
-    while((line = yield file.readLine())) {
+    // note that eof is defined when `readLine()` yields `null`
+    while((line = yield file.readLine()) !== null) {
         console.log(line);
     }
-}))();
+})();
 ```
 
 ## License:

@@ -1,16 +1,18 @@
 'use strict';
 
-var lineReader = require('line-by-line');
+var LineReaderImpl = require('line-by-line');
 
-var LineReader = function (filepath, options) {
-    var self = this;
-    if (1 === arguments.length) {
-        options = {};
-    }
-    options.skipEmptyLines = true;  // Have to set this to be true all the time
-    this._file = new lineReader(filepath, options);
+function LineReader(/* arguments */) {
+    // forward the the arguments to the underlying implementation
+    this._file = (function(args) {
+        function F(args) {
+            return LineReaderImpl.apply(this, args);
+        }
+        F.prototype = LineReaderImpl.prototype;
+        return new F(args);
+    })(arguments);
     this._file.pause();
-};
+}
 
 LineReader.prototype.readLine = function () {
     var self = this;
@@ -22,7 +24,7 @@ LineReader.prototype.readLine = function () {
             self._file.removeAllListeners();
         });
         self._file.once('end', function () {
-            resolve();
+            resolve(null);
             self._file.removeAllListeners();
         });
         self._file.once('error', function (err) {
