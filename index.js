@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+
 var lineReader = require('line-by-line');
 
 var LineReader = function (filepath, options) {
@@ -28,7 +29,7 @@ LineReader.prototype.readLine = function () {
             reject(err);
             self._file.removeAllListeners();
         });
-    });;
-}
+    });
+};
 
 module.exports = LineReader;
