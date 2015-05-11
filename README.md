@@ -1,13 +1,18 @@
 # line-by-line-promise
 
-is a [NodeJS](http://nodejs.org/) module that reads large text files line by line, without buffering the files into memory. It is built upon [line-by-line](https://github.com/RustyMarvin/line-by-line) but returns [Promise](https://www.promisejs.org/) for every line read, enabling generator based flow-control.
+is a [NodeJS](http://nodejs.org/) module that reads large text files line by line, without buffering
+the files into memory. It is built upon [line-by-line](https://github.com/RustyMarvin/line-by-line)
+but returns [Promise](https://www.promisejs.org/) for every line read, enabling generator based
+flow-control.
 
-Installation:
+## Installation:
 
-    npm install line-by-line-promise
+```shell
+npm install line-by-line-promise
+```
 
 
-## Usage:
+## Usage
 
 ```javascript
 var LineReader = require('line-by-line-promise');
@@ -32,7 +37,7 @@ Promise.coroutine(function* () {
 })();
 ```
 
-## License:
+## License
 
 The MIT License (MIT)
 
