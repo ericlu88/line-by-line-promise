@@ -1,16 +1,18 @@
 'use strict';
 
 var path = require('path');
-var co = require('co');
-var lineReader = require('./index');
+var Bluebird = require('bluebird');
 
-var file = new lineReader(path.resolve('./package.json'));
-co(function* () {
+var LineReader = require('./index');
+
+var file = new LineReader(path.resolve('./package.json'));
+Bluebird.coroutine(function* () {
     var line;
-    while((line = yield file.readLine())) {
+    // note that eof is defined when `readLine()` yields `null`
+    while((line = yield file.readLine()) !== null) {
         console.log(line);
     }
-}).catch(function (err) {
+})().catch(function(err) {
     console.log('Error: ' + err.message);
     return;
 });
