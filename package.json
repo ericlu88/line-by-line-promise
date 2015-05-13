@@ -24,6 +24,9 @@
     "generator"
   ],
   "author": "Eric Lu",
+  "contributors": [
+      "Eric N. Vander Weele <ericvw@gmail.com> (http://github.com/ericvw)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ericlu88/line-by-line-promise/issues"
